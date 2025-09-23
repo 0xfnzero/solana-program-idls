@@ -1,6 +1,9 @@
 {
   "version": "0.1.0",
   "name": "raydium_cp_swap",
+  "metadata": {
+    "address": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C"
+  },
   "instructions": [
     {
       "name": "createAmmConfig",
@@ -19,9 +22,7 @@
           "name": "owner",
           "isMut": true,
           "isSigner": true,
-          "docs": [
-            "Address to be set as protocol owner."
-          ]
+          "docs": ["Address to be set as protocol owner."]
         },
         {
           "name": "ammConfig",
@@ -31,33 +32,14 @@
             "Initialize config state account to store protocol owner address and fee rates."
           ]
         },
-        {
-          "name": "systemProgram",
-          "isMut": false,
-          "isSigner": false
-        }
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
       ],
       "args": [
-        {
-          "name": "index",
-          "type": "u16"
-        },
-        {
-          "name": "tradeFeeRate",
-          "type": "u64"
-        },
-        {
-          "name": "protocolFeeRate",
-          "type": "u64"
-        },
-        {
-          "name": "fundFeeRate",
-          "type": "u64"
-        },
-        {
-          "name": "createPoolFee",
-          "type": "u64"
-        }
+        { "name": "index", "type": "u16" },
+        { "name": "tradeFeeRate", "type": "u64" },
+        { "name": "protocolFeeRate", "type": "u64" },
+        { "name": "fundFeeRate", "type": "u64" },
+        { "name": "createPoolFee", "type": "u64" }
       ]
     },
     {
@@ -82,28 +64,18 @@
           "name": "owner",
           "isMut": false,
           "isSigner": true,
-          "docs": [
-            "The amm config owner or admin"
-          ]
+          "docs": ["The amm config owner or admin"]
         },
         {
           "name": "ammConfig",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "Amm config account to be changed"
-          ]
+          "docs": ["Amm config account to be changed"]
         }
       ],
       "args": [
-        {
-          "name": "param",
-          "type": "u8"
-        },
-        {
-          "name": "value",
-          "type": "u64"
-        }
+        { "name": "param", "type": "u8" },
+        { "name": "value", "type": "u64" }
       ]
     },
     {
@@ -118,23 +90,10 @@
         ""
       ],
       "accounts": [
-        {
-          "name": "authority",
-          "isMut": false,
-          "isSigner": true
-        },
-        {
-          "name": "poolState",
-          "isMut": true,
-          "isSigner": false
-        }
+        { "name": "authority", "isMut": false, "isSigner": true },
+        { "name": "poolState", "isMut": true, "isSigner": false }
       ],
-      "args": [
-        {
-          "name": "status",
-          "type": "u8"
-        }
-      ]
+      "args": [{ "name": "status", "type": "u8" }]
     },
     {
       "name": "collectProtocolFee",
@@ -153,62 +112,44 @@
           "name": "owner",
           "isMut": false,
           "isSigner": true,
-          "docs": [
-            "Only admin or owner can collect fee now"
-          ]
+          "docs": ["Only admin or owner can collect fee now"]
         },
-        {
-          "name": "authority",
-          "isMut": false,
-          "isSigner": false
-        },
+        { "name": "authority", "isMut": false, "isSigner": false },
         {
           "name": "poolState",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "Pool state stores accumulated protocol fee amount"
-          ]
+          "docs": ["Pool state stores accumulated protocol fee amount"]
         },
         {
           "name": "ammConfig",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "Amm config account stores owner"
-          ]
+          "docs": ["Amm config account stores owner"]
         },
         {
           "name": "token0Vault",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The address that holds pool tokens for token_0"
-          ]
+          "docs": ["The address that holds pool tokens for token_0"]
         },
         {
           "name": "token1Vault",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The address that holds pool tokens for token_1"
-          ]
+          "docs": ["The address that holds pool tokens for token_1"]
         },
         {
           "name": "vault0Mint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The mint of token_0 vault"
-          ]
+          "docs": ["The mint of token_0 vault"]
         },
         {
           "name": "vault1Mint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The mint of token_1 vault"
-          ]
+          "docs": ["The mint of token_1 vault"]
         },
         {
           "name": "recipientToken0Account",
@@ -230,28 +171,18 @@
           "name": "tokenProgram",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The SPL program to perform token transfers"
-          ]
+          "docs": ["The SPL program to perform token transfers"]
         },
         {
           "name": "tokenProgram2022",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The SPL program 2022 to perform token transfers"
-          ]
+          "docs": ["The SPL program 2022 to perform token transfers"]
         }
       ],
       "args": [
-        {
-          "name": "amount0Requested",
-          "type": "u64"
-        },
-        {
-          "name": "amount1Requested",
-          "type": "u64"
-        }
+        { "name": "amount0Requested", "type": "u64" },
+        { "name": "amount1Requested", "type": "u64" }
       ]
     },
     {
@@ -271,105 +202,73 @@
           "name": "owner",
           "isMut": false,
           "isSigner": true,
-          "docs": [
-            "Only admin or fund_owner can collect fee now"
-          ]
+          "docs": ["Only admin or fund_owner can collect fee now"]
         },
-        {
-          "name": "authority",
-          "isMut": false,
-          "isSigner": false
-        },
+        { "name": "authority", "isMut": false, "isSigner": false },
         {
           "name": "poolState",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "Pool state stores accumulated protocol fee amount"
-          ]
+          "docs": ["Pool state stores accumulated protocol fee amount"]
         },
         {
           "name": "ammConfig",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "Amm config account stores fund_owner"
-          ]
+          "docs": ["Amm config account stores fund_owner"]
         },
         {
           "name": "token0Vault",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The address that holds pool tokens for token_0"
-          ]
+          "docs": ["The address that holds pool tokens for token_0"]
         },
         {
           "name": "token1Vault",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The address that holds pool tokens for token_1"
-          ]
+          "docs": ["The address that holds pool tokens for token_1"]
         },
         {
           "name": "vault0Mint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The mint of token_0 vault"
-          ]
+          "docs": ["The mint of token_0 vault"]
         },
         {
           "name": "vault1Mint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The mint of token_1 vault"
-          ]
+          "docs": ["The mint of token_1 vault"]
         },
         {
           "name": "recipientToken0Account",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The address that receives the collected token_0 fund fees"
-          ]
+          "docs": ["The address that receives the collected token_0 fund fees"]
         },
         {
           "name": "recipientToken1Account",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The address that receives the collected token_1 fund fees"
-          ]
+          "docs": ["The address that receives the collected token_1 fund fees"]
         },
         {
           "name": "tokenProgram",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The SPL program to perform token transfers"
-          ]
+          "docs": ["The SPL program to perform token transfers"]
         },
         {
           "name": "tokenProgram2022",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The SPL program 2022 to perform token transfers"
-          ]
+          "docs": ["The SPL program 2022 to perform token transfers"]
         }
       ],
       "args": [
-        {
-          "name": "amount0Requested",
-          "type": "u64"
-        },
-        {
-          "name": "amount1Requested",
-          "type": "u64"
-        }
+        { "name": "amount0Requested", "type": "u64" },
+        { "name": "amount1Requested", "type": "u64" }
       ]
     },
     {
@@ -390,167 +289,112 @@
           "name": "creator",
           "isMut": true,
           "isSigner": true,
-          "docs": [
-            "Address paying to create the pool. Can be anyone"
-          ]
+          "docs": ["Address paying to create the pool. Can be anyone"]
         },
         {
           "name": "ammConfig",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "Which config the pool belongs to."
-          ]
+          "docs": ["Which config the pool belongs to."]
         },
-        {
-          "name": "authority",
-          "isMut": false,
-          "isSigner": false
-        },
+        { "name": "authority", "isMut": false, "isSigner": false },
         {
           "name": "poolState",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "Initialize an account to store the pool state"
-          ]
+          "docs": ["Initialize an account to store the pool state"]
         },
         {
           "name": "token0Mint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "Token_0 mint, the key must smaller then token_1 mint."
-          ]
+          "docs": ["Token_0 mint, the key must smaller then token_1 mint."]
         },
         {
           "name": "token1Mint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "Token_1 mint, the key must grater then token_0 mint."
-          ]
+          "docs": ["Token_1 mint, the key must grater then token_0 mint."]
         },
         {
           "name": "lpMint",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "pool lp mint"
-          ]
+          "docs": ["pool lp mint"]
         },
         {
           "name": "creatorToken0",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "payer token0 account"
-          ]
+          "docs": ["payer token0 account"]
         },
         {
           "name": "creatorToken1",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "creator token1 account"
-          ]
+          "docs": ["creator token1 account"]
         },
         {
           "name": "creatorLpToken",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "creator lp token account"
-          ]
+          "docs": ["creator lp token account"]
         },
-        {
-          "name": "token0Vault",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "token1Vault",
-          "isMut": true,
-          "isSigner": false
-        },
+        { "name": "token0Vault", "isMut": true, "isSigner": false },
+        { "name": "token1Vault", "isMut": true, "isSigner": false },
         {
           "name": "createPoolFee",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "create pool fee account"
-          ]
+          "docs": ["create pool fee account"]
         },
         {
           "name": "observationState",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "an account to store oracle observations"
-          ]
+          "docs": ["an account to store oracle observations"]
         },
         {
           "name": "tokenProgram",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "Program to create mint account and mint tokens"
-          ]
+          "docs": ["Program to create mint account and mint tokens"]
         },
         {
           "name": "token0Program",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "Spl token program or token program 2022"
-          ]
+          "docs": ["Spl token program or token program 2022"]
         },
         {
           "name": "token1Program",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "Spl token program or token program 2022"
-          ]
+          "docs": ["Spl token program or token program 2022"]
         },
         {
           "name": "associatedTokenProgram",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "Program to create an ATA for receiving position NFT"
-          ]
+          "docs": ["Program to create an ATA for receiving position NFT"]
         },
         {
           "name": "systemProgram",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "To create a new program account"
-          ]
+          "docs": ["To create a new program account"]
         },
         {
           "name": "rent",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "Sysvar for program account"
-          ]
+          "docs": ["Sysvar for program account"]
         }
       ],
       "args": [
-        {
-          "name": "initAmount0",
-          "type": "u64"
-        },
-        {
-          "name": "initAmount1",
-          "type": "u64"
-        },
-        {
-          "name": "openTime",
-          "type": "u64"
-        }
+        { "name": "initAmount0", "type": "u64" },
+        { "name": "initAmount1", "type": "u64" },
+        { "name": "openTime", "type": "u64" }
       ]
     },
     {
@@ -571,114 +415,75 @@
           "name": "owner",
           "isMut": false,
           "isSigner": true,
-          "docs": [
-            "Pays to mint the position"
-          ]
+          "docs": ["Pays to mint the position"]
         },
-        {
-          "name": "authority",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "poolState",
-          "isMut": true,
-          "isSigner": false
-        },
+        { "name": "authority", "isMut": false, "isSigner": false },
+        { "name": "poolState", "isMut": true, "isSigner": false },
         {
           "name": "ownerLpToken",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "Owner lp tokan account"
-          ]
+          "docs": ["Owner lp tokan account"]
         },
         {
           "name": "token0Account",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The payer's token account for token_0"
-          ]
+          "docs": ["The payer's token account for token_0"]
         },
         {
           "name": "token1Account",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The payer's token account for token_1"
-          ]
+          "docs": ["The payer's token account for token_1"]
         },
         {
           "name": "token0Vault",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The address that holds pool tokens for token_0"
-          ]
+          "docs": ["The address that holds pool tokens for token_0"]
         },
         {
           "name": "token1Vault",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The address that holds pool tokens for token_1"
-          ]
+          "docs": ["The address that holds pool tokens for token_1"]
         },
         {
           "name": "tokenProgram",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "token Program"
-          ]
+          "docs": ["token Program"]
         },
         {
           "name": "tokenProgram2022",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "Token program 2022"
-          ]
+          "docs": ["Token program 2022"]
         },
         {
           "name": "vault0Mint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The mint of token_0 vault"
-          ]
+          "docs": ["The mint of token_0 vault"]
         },
         {
           "name": "vault1Mint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The mint of token_1 vault"
-          ]
+          "docs": ["The mint of token_1 vault"]
         },
         {
           "name": "lpMint",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "Lp token mint"
-          ]
+          "docs": ["Lp token mint"]
         }
       ],
       "args": [
-        {
-          "name": "lpTokenAmount",
-          "type": "u64"
-        },
-        {
-          "name": "maximumToken0Amount",
-          "type": "u64"
-        },
-        {
-          "name": "maximumToken1Amount",
-          "type": "u64"
-        }
+        { "name": "lpTokenAmount", "type": "u64" },
+        { "name": "maximumToken0Amount", "type": "u64" },
+        { "name": "maximumToken1Amount", "type": "u64" }
       ]
     },
     {
@@ -699,125 +504,86 @@
           "name": "owner",
           "isMut": false,
           "isSigner": true,
-          "docs": [
-            "Pays to mint the position"
-          ]
+          "docs": ["Pays to mint the position"]
         },
-        {
-          "name": "authority",
-          "isMut": false,
-          "isSigner": false
-        },
+        { "name": "authority", "isMut": false, "isSigner": false },
         {
           "name": "poolState",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "Pool state account"
-          ]
+          "docs": ["Pool state account"]
         },
         {
           "name": "ownerLpToken",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "Owner lp token account"
-          ]
+          "docs": ["Owner lp token account"]
         },
         {
           "name": "token0Account",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The owner's token account for receive token_0"
-          ]
+          "docs": ["The owner's token account for receive token_0"]
         },
         {
           "name": "token1Account",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The owner's token account for receive token_1"
-          ]
+          "docs": ["The owner's token account for receive token_1"]
         },
         {
           "name": "token0Vault",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The address that holds pool tokens for token_0"
-          ]
+          "docs": ["The address that holds pool tokens for token_0"]
         },
         {
           "name": "token1Vault",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The address that holds pool tokens for token_1"
-          ]
+          "docs": ["The address that holds pool tokens for token_1"]
         },
         {
           "name": "tokenProgram",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "token Program"
-          ]
+          "docs": ["token Program"]
         },
         {
           "name": "tokenProgram2022",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "Token program 2022"
-          ]
+          "docs": ["Token program 2022"]
         },
         {
           "name": "vault0Mint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The mint of token_0 vault"
-          ]
+          "docs": ["The mint of token_0 vault"]
         },
         {
           "name": "vault1Mint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The mint of token_1 vault"
-          ]
+          "docs": ["The mint of token_1 vault"]
         },
         {
           "name": "lpMint",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "Pool lp token mint"
-          ]
+          "docs": ["Pool lp token mint"]
         },
         {
           "name": "memoProgram",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "memo program"
-          ]
+          "docs": ["memo program"]
         }
       ],
       "args": [
-        {
-          "name": "lpTokenAmount",
-          "type": "u64"
-        },
-        {
-          "name": "minimumToken0Amount",
-          "type": "u64"
-        },
-        {
-          "name": "minimumToken1Amount",
-          "type": "u64"
-        }
+        { "name": "lpTokenAmount", "type": "u64" },
+        { "name": "minimumToken0Amount", "type": "u64" },
+        { "name": "minimumToken1Amount", "type": "u64" }
       ]
     },
     {
@@ -837,22 +603,14 @@
           "name": "payer",
           "isMut": false,
           "isSigner": true,
-          "docs": [
-            "The user performing the swap"
-          ]
+          "docs": ["The user performing the swap"]
         },
-        {
-          "name": "authority",
-          "isMut": false,
-          "isSigner": false
-        },
+        { "name": "authority", "isMut": false, "isSigner": false },
         {
           "name": "ammConfig",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The factory state to read protocol fees"
-          ]
+          "docs": ["The factory state to read protocol fees"]
         },
         {
           "name": "poolState",
@@ -866,84 +624,60 @@
           "name": "inputTokenAccount",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The user token account for input token"
-          ]
+          "docs": ["The user token account for input token"]
         },
         {
           "name": "outputTokenAccount",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The user token account for output token"
-          ]
+          "docs": ["The user token account for output token"]
         },
         {
           "name": "inputVault",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The vault token account for input token"
-          ]
+          "docs": ["The vault token account for input token"]
         },
         {
           "name": "outputVault",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The vault token account for output token"
-          ]
+          "docs": ["The vault token account for output token"]
         },
         {
           "name": "inputTokenProgram",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "SPL program for input token transfers"
-          ]
+          "docs": ["SPL program for input token transfers"]
         },
         {
           "name": "outputTokenProgram",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "SPL program for output token transfers"
-          ]
+          "docs": ["SPL program for output token transfers"]
         },
         {
           "name": "inputTokenMint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The mint of input token"
-          ]
+          "docs": ["The mint of input token"]
         },
         {
           "name": "outputTokenMint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The mint of output token"
-          ]
+          "docs": ["The mint of output token"]
         },
         {
           "name": "observationState",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The program account for the most recent oracle observation"
-          ]
+          "docs": ["The program account for the most recent oracle observation"]
         }
       ],
       "args": [
-        {
-          "name": "amountIn",
-          "type": "u64"
-        },
-        {
-          "name": "minimumAmountOut",
-          "type": "u64"
-        }
+        { "name": "amountIn", "type": "u64" },
+        { "name": "minimumAmountOut", "type": "u64" }
       ]
     },
     {
@@ -963,22 +697,14 @@
           "name": "payer",
           "isMut": false,
           "isSigner": true,
-          "docs": [
-            "The user performing the swap"
-          ]
+          "docs": ["The user performing the swap"]
         },
-        {
-          "name": "authority",
-          "isMut": false,
-          "isSigner": false
-        },
+        { "name": "authority", "isMut": false, "isSigner": false },
         {
           "name": "ammConfig",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The factory state to read protocol fees"
-          ]
+          "docs": ["The factory state to read protocol fees"]
         },
         {
           "name": "poolState",
@@ -992,117 +718,77 @@
           "name": "inputTokenAccount",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The user token account for input token"
-          ]
+          "docs": ["The user token account for input token"]
         },
         {
           "name": "outputTokenAccount",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The user token account for output token"
-          ]
+          "docs": ["The user token account for output token"]
         },
         {
           "name": "inputVault",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The vault token account for input token"
-          ]
+          "docs": ["The vault token account for input token"]
         },
         {
           "name": "outputVault",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The vault token account for output token"
-          ]
+          "docs": ["The vault token account for output token"]
         },
         {
           "name": "inputTokenProgram",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "SPL program for input token transfers"
-          ]
+          "docs": ["SPL program for input token transfers"]
         },
         {
           "name": "outputTokenProgram",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "SPL program for output token transfers"
-          ]
+          "docs": ["SPL program for output token transfers"]
         },
         {
           "name": "inputTokenMint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The mint of input token"
-          ]
+          "docs": ["The mint of input token"]
         },
         {
           "name": "outputTokenMint",
           "isMut": false,
           "isSigner": false,
-          "docs": [
-            "The mint of output token"
-          ]
+          "docs": ["The mint of output token"]
         },
         {
           "name": "observationState",
           "isMut": true,
           "isSigner": false,
-          "docs": [
-            "The program account for the most recent oracle observation"
-          ]
+          "docs": ["The program account for the most recent oracle observation"]
         }
       ],
       "args": [
-        {
-          "name": "maxAmountIn",
-          "type": "u64"
-        },
-        {
-          "name": "amountOut",
-          "type": "u64"
-        }
+        { "name": "maxAmountIn", "type": "u64" },
+        { "name": "amountOut", "type": "u64" }
       ]
     }
   ],
   "accounts": [
     {
       "name": "AmmConfig",
-      "docs": [
-        "Holds the current owner of the factory"
-      ],
+      "docs": ["Holds the current owner of the factory"],
       "type": {
         "kind": "struct",
         "fields": [
-          {
-            "name": "bump",
-            "docs": [
-              "Bump to identify PDA"
-            ],
-            "type": "u8"
-          },
+          { "name": "bump", "docs": ["Bump to identify PDA"], "type": "u8" },
           {
             "name": "disableCreatePool",
-            "docs": [
-              "Status to control if new pool can be create"
-            ],
+            "docs": ["Status to control if new pool can be create"],
             "type": "bool"
           },
-          {
-            "name": "index",
-            "docs": [
-              "Config index"
-            ],
-            "type": "u16"
-          },
+          { "name": "index", "docs": ["Config index"], "type": "u16" },
           {
             "name": "tradeFeeRate",
             "docs": [
@@ -1112,9 +798,7 @@
           },
           {
             "name": "protocolFeeRate",
-            "docs": [
-              "The protocol fee"
-            ],
+            "docs": ["The protocol fee"],
             "type": "u64"
           },
           {
@@ -1126,36 +810,23 @@
           },
           {
             "name": "createPoolFee",
-            "docs": [
-              "Fee for create a new pool"
-            ],
+            "docs": ["Fee for create a new pool"],
             "type": "u64"
           },
           {
             "name": "protocolOwner",
-            "docs": [
-              "Address of the protocol fee owner"
-            ],
+            "docs": ["Address of the protocol fee owner"],
             "type": "publicKey"
           },
           {
             "name": "fundOwner",
-            "docs": [
-              "Address of the fund fee owner"
-            ],
+            "docs": ["Address of the fund fee owner"],
             "type": "publicKey"
           },
           {
             "name": "padding",
-            "docs": [
-              "padding"
-            ],
-            "type": {
-              "array": [
-                "u64",
-                16
-              ]
-            }
+            "docs": ["padding"],
+            "type": { "array": ["u64", 16] }
           }
         ]
       }
@@ -1167,9 +838,7 @@
         "fields": [
           {
             "name": "initialized",
-            "docs": [
-              "Whether the ObservationState is initialized"
-            ],
+            "docs": ["Whether the ObservationState is initialized"],
             "type": "bool"
           },
           {
@@ -1179,35 +848,16 @@
             ],
             "type": "u16"
           },
-          {
-            "name": "poolId",
-            "type": "publicKey"
-          },
+          { "name": "poolId", "type": "publicKey" },
           {
             "name": "observations",
-            "docs": [
-              "observation array"
-            ],
-            "type": {
-              "array": [
-                {
-                  "defined": "Observation"
-                },
-                100
-              ]
-            }
+            "docs": ["observation array"],
+            "type": { "array": [{ "defined": "Observation" }, 100] }
           },
           {
             "name": "padding",
-            "docs": [
-              "padding for feature update"
-            ],
-            "type": {
-              "array": [
-                "u64",
-                4
-              ]
-            }
+            "docs": ["padding for feature update"],
+            "type": { "array": ["u64", 4] }
           }
         ]
       }
@@ -1219,32 +869,16 @@
         "fields": [
           {
             "name": "ammConfig",
-            "docs": [
-              "Which config the pool belongs"
-            ],
+            "docs": ["Which config the pool belongs"],
             "type": "publicKey"
           },
           {
             "name": "poolCreator",
-            "docs": [
-              "pool creator"
-            ],
+            "docs": ["pool creator"],
             "type": "publicKey"
           },
-          {
-            "name": "token0Vault",
-            "docs": [
-              "Token A"
-            ],
-            "type": "publicKey"
-          },
-          {
-            "name": "token1Vault",
-            "docs": [
-              "Token B"
-            ],
-            "type": "publicKey"
-          },
+          { "name": "token0Vault", "docs": ["Token A"], "type": "publicKey" },
+          { "name": "token1Vault", "docs": ["Token B"], "type": "publicKey" },
           {
             "name": "lpMint",
             "docs": [
@@ -1255,43 +889,30 @@
           },
           {
             "name": "token0Mint",
-            "docs": [
-              "Mint information for token A"
-            ],
+            "docs": ["Mint information for token A"],
             "type": "publicKey"
           },
           {
             "name": "token1Mint",
-            "docs": [
-              "Mint information for token B"
-            ],
+            "docs": ["Mint information for token B"],
             "type": "publicKey"
           },
           {
             "name": "token0Program",
-            "docs": [
-              "token_0 program"
-            ],
+            "docs": ["token_0 program"],
             "type": "publicKey"
           },
           {
             "name": "token1Program",
-            "docs": [
-              "token_1 program"
-            ],
+            "docs": ["token_1 program"],
             "type": "publicKey"
           },
           {
             "name": "observationKey",
-            "docs": [
-              "observation account to store oracle data"
-            ],
+            "docs": ["observation account to store oracle data"],
             "type": "publicKey"
           },
-          {
-            "name": "authBump",
-            "type": "u8"
-          },
+          { "name": "authBump", "type": "u8" },
           {
             "name": "status",
             "docs": [
@@ -1302,28 +923,14 @@
             ],
             "type": "u8"
           },
-          {
-            "name": "lpMintDecimals",
-            "type": "u8"
-          },
+          { "name": "lpMintDecimals", "type": "u8" },
           {
             "name": "mint0Decimals",
-            "docs": [
-              "mint0 and mint1 decimals"
-            ],
+            "docs": ["mint0 and mint1 decimals"],
             "type": "u8"
           },
-          {
-            "name": "mint1Decimals",
-            "type": "u8"
-          },
-          {
-            "name": "lpSupply",
-            "docs": [
-              "lp mint supply"
-            ],
-            "type": "u64"
-          },
+          { "name": "mint1Decimals", "type": "u8" },
+          { "name": "lpSupply", "docs": ["lp mint supply"], "type": "u64" },
           {
             "name": "protocolFeesToken0",
             "docs": [
@@ -1331,36 +938,18 @@
             ],
             "type": "u64"
           },
-          {
-            "name": "protocolFeesToken1",
-            "type": "u64"
-          },
-          {
-            "name": "fundFeesToken0",
-            "type": "u64"
-          },
-          {
-            "name": "fundFeesToken1",
-            "type": "u64"
-          },
+          { "name": "protocolFeesToken1", "type": "u64" },
+          { "name": "fundFeesToken0", "type": "u64" },
+          { "name": "fundFeesToken1", "type": "u64" },
           {
             "name": "openTime",
-            "docs": [
-              "The timestamp allowed for swap in the pool."
-            ],
+            "docs": ["The timestamp allowed for swap in the pool."],
             "type": "u64"
           },
           {
             "name": "padding",
-            "docs": [
-              "padding for future updates"
-            ],
-            "type": {
-              "array": [
-                "u64",
-                32
-              ]
-            }
+            "docs": ["padding for future updates"],
+            "type": { "array": ["u64", 32] }
           }
         ]
       }
@@ -1369,17 +958,13 @@
   "types": [
     {
       "name": "Observation",
-      "docs": [
-        "The element of observations in ObservationState"
-      ],
+      "docs": ["The element of observations in ObservationState"],
       "type": {
         "kind": "struct",
         "fields": [
           {
             "name": "blockTimestamp",
-            "docs": [
-              "The block timestamp of the observation"
-            ],
+            "docs": ["The block timestamp of the observation"],
             "type": "u64"
           },
           {
@@ -1407,14 +992,7 @@
       ],
       "type": {
         "kind": "enum",
-        "variants": [
-          {
-            "name": "ZeroForOne"
-          },
-          {
-            "name": "OneForZero"
-          }
-        ]
+        "variants": [{ "name": "ZeroForOne" }, { "name": "OneForZero" }]
       }
     },
     {
@@ -1425,14 +1003,7 @@
       ],
       "type": {
         "kind": "enum",
-        "variants": [
-          {
-            "name": "Floor"
-          },
-          {
-            "name": "Ceiling"
-          }
-        ]
+        "variants": [{ "name": "Floor" }, { "name": "Ceiling" }]
       }
     },
     {
@@ -1440,15 +1011,9 @@
       "type": {
         "kind": "enum",
         "variants": [
-          {
-            "name": "Deposit"
-          },
-          {
-            "name": "Withdraw"
-          },
-          {
-            "name": "Swap"
-          }
+          { "name": "Deposit" },
+          { "name": "Withdraw" },
+          { "name": "Swap" }
         ]
       }
     },
@@ -1456,14 +1021,7 @@
       "name": "PoolStatusBitFlag",
       "type": {
         "kind": "enum",
-        "variants": [
-          {
-            "name": "Enable"
-          },
-          {
-            "name": "Disable"
-          }
-        ]
+        "variants": [{ "name": "Enable" }, { "name": "Disable" }]
       }
     }
   ],
@@ -1471,120 +1029,40 @@
     {
       "name": "LpChangeEvent",
       "fields": [
-        {
-          "name": "poolId",
-          "type": "publicKey",
-          "index": true
-        },
-        {
-          "name": "lpAmountBefore",
-          "type": "u64",
-          "index": false
-        },
-        {
-          "name": "token0VaultBefore",
-          "type": "u64",
-          "index": false
-        },
-        {
-          "name": "token1VaultBefore",
-          "type": "u64",
-          "index": false
-        },
-        {
-          "name": "token0Amount",
-          "type": "u64",
-          "index": false
-        },
-        {
-          "name": "token1Amount",
-          "type": "u64",
-          "index": false
-        },
-        {
-          "name": "token0TransferFee",
-          "type": "u64",
-          "index": false
-        },
-        {
-          "name": "token1TransferFee",
-          "type": "u64",
-          "index": false
-        },
-        {
-          "name": "changeType",
-          "type": "u8",
-          "index": false
-        }
+        { "name": "poolId", "type": "publicKey", "index": true },
+        { "name": "lpAmountBefore", "type": "u64", "index": false },
+        { "name": "token0VaultBefore", "type": "u64", "index": false },
+        { "name": "token1VaultBefore", "type": "u64", "index": false },
+        { "name": "token0Amount", "type": "u64", "index": false },
+        { "name": "token1Amount", "type": "u64", "index": false },
+        { "name": "token0TransferFee", "type": "u64", "index": false },
+        { "name": "token1TransferFee", "type": "u64", "index": false },
+        { "name": "changeType", "type": "u8", "index": false }
       ]
     },
     {
       "name": "SwapEvent",
       "fields": [
-        {
-          "name": "poolId",
-          "type": "publicKey",
-          "index": true
-        },
-        {
-          "name": "inputVaultBefore",
-          "type": "u64",
-          "index": false
-        },
-        {
-          "name": "outputVaultBefore",
-          "type": "u64",
-          "index": false
-        },
-        {
-          "name": "inputAmount",
-          "type": "u64",
-          "index": false
-        },
-        {
-          "name": "outputAmount",
-          "type": "u64",
-          "index": false
-        },
-        {
-          "name": "inputTransferFee",
-          "type": "u64",
-          "index": false
-        },
-        {
-          "name": "outputTransferFee",
-          "type": "u64",
-          "index": false
-        },
-        {
-          "name": "baseInput",
-          "type": "bool",
-          "index": false
-        }
+        { "name": "poolId", "type": "publicKey", "index": true },
+        { "name": "inputVaultBefore", "type": "u64", "index": false },
+        { "name": "outputVaultBefore", "type": "u64", "index": false },
+        { "name": "inputAmount", "type": "u64", "index": false },
+        { "name": "outputAmount", "type": "u64", "index": false },
+        { "name": "inputTransferFee", "type": "u64", "index": false },
+        { "name": "outputTransferFee", "type": "u64", "index": false },
+        { "name": "baseInput", "type": "bool", "index": false }
       ]
     }
   ],
   "errors": [
-    {
-      "code": 6000,
-      "name": "NotApproved",
-      "msg": "Not approved"
-    },
+    { "code": 6000, "name": "NotApproved", "msg": "Not approved" },
     {
       "code": 6001,
       "name": "InvalidOwner",
       "msg": "Input account owner is not the program address"
     },
-    {
-      "code": 6002,
-      "name": "EmptySupply",
-      "msg": "Input token account empty"
-    },
-    {
-      "code": 6003,
-      "name": "InvalidInput",
-      "msg": "InvalidInput"
-    },
+    { "code": 6002, "name": "EmptySupply", "msg": "Input token account empty" },
+    { "code": 6003, "name": "InvalidInput", "msg": "InvalidInput" },
     {
       "code": 6004,
       "name": "IncorrectLpMint",
@@ -1605,11 +1083,7 @@
       "name": "NotSupportMint",
       "msg": "Not support token_2022 mint extension"
     },
-    {
-      "code": 6008,
-      "name": "InvalidVault",
-      "msg": "invaild vault"
-    },
+    { "code": 6008, "name": "InvalidVault", "msg": "invaild vault" },
     {
       "code": 6009,
       "name": "InitLpAmountTooLess",
