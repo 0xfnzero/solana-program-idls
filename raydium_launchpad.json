@@ -36,6 +36,7 @@
             "The user performing the swap operation",
             "Must sign the transaction and pay for fees"
           ],
+          "writable": true,
           "signer": true
         },
         {
@@ -225,6 +226,7 @@
             "The user performing the swap operation",
             "Must sign the transaction and pay for fees"
           ],
+          "writable": true,
           "signer": true
         },
         {
@@ -1521,6 +1523,9 @@
         },
         {
           "name": "transfer_fee_extension_authority"
+        },
+        {
+          "name": "platform_vesting_wallet"
         }
       ],
       "args": [
@@ -1533,6 +1538,104 @@
           }
         }
       ]
+    },
+    {
+      "name": "create_platform_vesting_account",
+      "docs": [
+        "Create vesting account",
+        "# Arguments",
+        "",
+        "* `ctx` - The context of accounts",
+        "* `share` - The share amount of base token to be vested",
+        ""
+      ],
+      "discriminator": [
+        146,
+        71,
+        173,
+        69,
+        98,
+        19,
+        15,
+        106
+      ],
+      "accounts": [
+        {
+          "name": "platform_vesting_wallet",
+          "docs": [
+            "The account paying for the initialization costs",
+            "This can be any account with sufficient SOL to cover the transaction"
+          ],
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "beneficiary",
+          "docs": [
+            "The beneficiary is used to receive the allocated linear release of tokens.",
+            "Once this account is set, it cannot be modified, so please ensure the validity of this account,",
+            "otherwise, the unlocked tokens will not be claimable."
+          ],
+          "writable": true
+        },
+        {
+          "name": "platform_config",
+          "docs": [
+            "Platform config account to be changed"
+          ]
+        },
+        {
+          "name": "pool_state",
+          "docs": [
+            "The pool state account"
+          ],
+          "writable": true
+        },
+        {
+          "name": "platform_vesting_record",
+          "docs": [
+            "The vesting record account"
+          ],
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  111,
+                  108,
+                  95,
+                  118,
+                  101,
+                  115,
+                  116,
+                  105,
+                  110,
+                  103
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "pool_state"
+              },
+              {
+                "kind": "account",
+                "path": "beneficiary"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "docs": [
+            "Required for account creation"
+          ],
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
     },
     {
       "name": "create_vesting_account",
@@ -3650,6 +3753,7 @@
             "The user performing the swap operation",
             "Must sign the transaction and pay for fees"
           ],
+          "writable": true,
           "signer": true
         },
         {
@@ -3840,6 +3944,7 @@
             "The user performing the swap operation",
             "Must sign the transaction and pay for fees"
           ],
+          "writable": true,
           "signer": true
         },
         {
@@ -4435,6 +4540,11 @@
       "code": 6020,
       "name": "CurveParamIsNotExist",
       "msg": "Curve param is not exist"
+    },
+    {
+      "code": 6021,
+      "name": "InvalidTotalLockedAmount",
+      "msg": "Total locked amount must great or equal to the platform vesting share amount"
     }
   ],
   "types": [
@@ -4996,6 +5106,22 @@
             "type": "pubkey"
           },
           {
+            "name": "platform_vesting_wallet",
+            "type": "pubkey"
+          },
+          {
+            "name": "platform_vesting_scale",
+            "type": "u64"
+          },
+          {
+            "name": "platform_cp_creator",
+            "docs": [
+              "If a valid platform_cp_creator is configured for the platform,",
+              "it will be used as the creator for the AMM pool during migration to cpswap pool."
+            ],
+            "type": "pubkey"
+          },
+          {
             "name": "padding",
             "docs": [
               "padding for future updates"
@@ -5003,7 +5129,7 @@
             "type": {
               "array": [
                 "u8",
-                180
+                108
               ]
             }
           },
@@ -5067,6 +5193,14 @@
           {
             "name": "creator_fee_rate",
             "type": "u64"
+          },
+          {
+            "name": "platform_vesting_scale",
+            "type": "u64"
+          },
+          {
+            "name": "vesting_wallet",
+            "type": "pubkey"
           }
         ]
       }
@@ -5133,6 +5267,24 @@
                   "name": "PlatformConfigInfo"
                 }
               }
+            ]
+          },
+          {
+            "name": "VestingWallet",
+            "fields": [
+              "pubkey"
+            ]
+          },
+          {
+            "name": "PlatformVestingScale",
+            "fields": [
+              "u64"
+            ]
+          },
+          {
+            "name": "PlatformCPCreator",
+            "fields": [
+              "pubkey"
             ]
           }
         ]
@@ -5231,6 +5383,10 @@
           },
           {
             "name": "creator_fee_rate",
+            "type": "u64"
+          },
+          {
+            "name": "platform_vesting_scale",
             "type": "u64"
           }
         ]
@@ -5509,6 +5665,13 @@
             }
           },
           {
+            "name": "platform_vesting_share",
+            "docs": [
+              "platform vesting token amount"
+            ],
+            "type": "u64"
+          },
+          {
             "name": "padding",
             "docs": [
               "padding for future updates"
@@ -5516,7 +5679,7 @@
             "type": {
               "array": [
                 "u8",
-                62
+                54
               ]
             }
           }
